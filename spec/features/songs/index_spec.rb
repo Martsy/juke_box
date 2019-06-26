@@ -2,11 +2,13 @@
 
 require 'rails_helper'
 
-RSpec.describe 'songs index' do
+RSpec.describe 'Songs Index' do
   describe 'As a Visitor' do
     it 'I see all songs and their title and play count' do
-      song1 = Song.create(title: 'Hit Me Baby One More Time', length: 345, play_count: 10)
-      song2 = Song.create(title: 'What is Love', length: 543, play_count: 2)
+      artist1 = Artist.create!(name: "Britney Spears")
+      artist2 = Artist.create!(name: "Haddaway")
+      song1 = artist1.songs.create!(title: 'Hit Me Baby One More Time', length: 345, play_count: 10)
+      song2 = artist2.songs.create!(title: 'What is Love', length: 543, play_count: 2)
 
       visit "/songs"
 
